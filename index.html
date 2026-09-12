@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MVP Parts — náhradní díly podle VIN</title>
+  <meta name="description" content="MVP Parts: náhradní díly pro auta v České republice. VIN, rychlá poptávka a doručení den v den vlastní kurýrní službou." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Titillium+Web:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/site.css" />
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <a class="brand-lock" href="index.html">
+        <span class="mvp">MVP</span>
+        <span class="parts">PARTS</span>
+      </a>
+      <div class="nav-right">
+        <a class="nav-link" href="katalog.html" data-i18n="nav_cat">Katalog</a>
+        <a class="nav-link" href="baterie.html" data-i18n="tab_bat">Autobaterie</a>
+        <div class="lang" role="group" aria-label="Language">
+          <button type="button" data-set-lang="cs" class="active">CS</button>
+          <button type="button" data-set-lang="ru">RU</button>
+        </div>
+        <a class="nav-cta" href="#objednavka" data-i18n="nav_cta">Poptávka</a>
+      </div>
+    </div>
+  </header>
+  <section class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="kicker" data-i18n="badge">Česko · MVP úroveň servisu</div>
+        <h1 data-i18n="hero_title">Díly jako MVP — rychle a přesně podle VIN</h1>
+        <p data-i18n="hero_text">Pošlete značku vozu, VIN a kontakt. Najdeme originál i aftermarket a dovezeme vlastní kurýrní službou — často ještě tentýž den.</p>
+        <div class="pills">
+          <span class="pill" data-i18n="pill1">Celá ČR</span>
+          <span class="pill" data-i18n="pill2">Den v den vlastní kurýr</span>
+          <span class="pill" data-i18n="pill3">Osobní i firemní poptávky</span>
+        </div>
+      </div>
+      <div class="form-card" id="objednavka">
+        <h2 data-i18n="form_title">Objednávka / poptávka</h2>
+        <p class="sub" data-i18n="form_sub">Vyplňte údaje o autě. Čím přesnější VIN, tím rychlejší nabídka.</p>
+        <form id="order-form" novalidate>
+          <div>
+            <label for="auto" data-i18n="label_auto">Vozidlo (značka, model, rok)</label>
+            <input id="auto" name="auto" type="text" required />
+          </div>
+          <div>
+            <label for="vin" data-i18n="label_vin">VIN kód</label>
+            <input id="vin" name="vin" type="text" maxlength="17" required />
+          </div>
+          <div>
+            <label for="jmeno" data-i18n="label_name">Jméno majitele</label>
+            <input id="jmeno" name="jmeno" type="text" required />
+          </div>
+          <div>
+            <label for="telefon" data-i18n="label_phone">Telefon</label>
+            <input id="telefon" name="telefon" type="tel" required />
+          </div>
+          <div>
+            <label for="komentar" data-i18n="label_comment">Jaký díl potřebujete?</label>
+            <textarea id="komentar" name="komentar"></textarea>
+          </div>
+          <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
+          <button class="btn" type="submit" id="submit-btn" data-i18n="btn">Odeslat poptávku</button>
+          <div id="form-status" class="status" role="status"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+  <section class="catalog" id="katalog">
+    <div class="section" style="padding-top:72px;padding-bottom:72px">
+      <h2 data-i18n="cat_title">Katalog vozidel</h2>
+      <p class="lead" data-i18n="cat_lead">Značka → model → orientační ceny.</p>
+      <div class="cat-tabs" id="cat-tabs">
+        <button type="button" data-cat-mode="cars" class="on" data-i18n="tab_cars">Auta / díly</button>
+        <button type="button" data-cat-mode="bat" data-i18n="tab_bat">Autobaterie</button>
+      </div>
+      <div class="crumbs" id="cat-crumbs"></div>
+      <div id="cat-view"></div>
+    </div>
+  </section>
+  <section class="delivery">
+    <div class="inner">
+      <div>
+        <h2 data-i18n="del_title">Doručení den v den — vlastní kurýr</h2>
+        <p data-i18n="del_text">Pokud je díl skladem, vyjedeme sami.</p>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <div class="foot">
+      <div><strong>MVP Parts</strong></div>
+    </div>
+  </footer>
+  <script src="js/site.js"></script>
+</body>
+</html>

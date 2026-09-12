@@ -1,0 +1,6 @@
+.DS_Store
+*.zip
+searched_images/
+rendered/
+.grok/
+design-ai-training/
