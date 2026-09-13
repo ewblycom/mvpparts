@@ -3,149 +3,54 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MVP Parts — náhradní díly podle VIN</title>
-  <meta name="description" content="MVP Parts: náhradní díly pro auta v České republice. VIN, rychlá poptávka a doručení den v den vlastní kurýrní službou." />
+  <title>MVP Parts — náhradní díly</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Titillium+Web:wght@300;400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/site.css" />
 </head>
 <body>
+  <div class="topbar">
+    <div class="wrap">
+      <a href="#/vin" data-i18n="vinTop">Hledat dle VIN</a>
+      <a href="#/dodani" data-i18n="when">Kdy dostanu díl?</a>
+      <a href="#/dodani" data-i18n="ship">Poštovné</a>
+      <a href="#/kontakt" data-i18n="contact">Kontakt</a>
+      <span class="spacer"></span>
+      <button type="button" data-set-lang="cs">CS</button>
+      <button type="button" data-set-lang="ru">RU</button>
+    </div>
+  </div>
   <header>
-    <div class="nav">
-      <a class="brand-lock" href="index.html">
+    <div class="wrap head">
+      <a class="logo" href="#/">
         <span class="mvp">MVP</span>
         <span class="parts">PARTS</span>
       </a>
-      <div class="nav-right">
-        <a class="nav-link" href="katalog.html" data-i18n="nav_cat">Katalog</a>
-        <a class="nav-link" href="baterie.html" data-i18n="tab_bat">Autobaterie</a>
-        <div class="lang" role="group" aria-label="Language">
-          <button type="button" data-set-lang="cs" class="active">CS</button>
-          <button type="button" data-set-lang="ru">RU</button>
-        </div>
+      <div class="head-meta">
+        <a href="tel:+420773079737">+420 773 079 737</a>
       </div>
+      <form class="search" id="site-search">
+        <input type="search" data-i18n-placeholder="searchPh" placeholder="Hledané číslo dílu, část názvu nebo EAN" />
+        <button type="submit" aria-label="Hledat">⌕</button>
+      </form>
+      <form class="vin-search" id="vin-search">
+        <input name="vin" maxlength="17" placeholder="VIN" data-i18n-placeholder="vinPh" autocomplete="off" />
+        <button type="submit" data-i18n="vinCta">VIN</button>
+      </form>
+      <a class="ico-link" href="#/kosik"><small data-i18n="fav">oblíbené</small><b id="fav-count">0</b></a>
+      <a class="ico-link cart-link" href="#/kosik"><small data-i18n="cart">můj košík</small><b id="cart-sum">0 Kč</b></a>
     </div>
   </header>
-
-  <section class="hero">
-    <div class="hero-inner">
-      <div>
-        <div class="kicker" data-i18n="badge">Česko · MVP úroveň servisu</div>
-        <h1 data-i18n="hero_title">Díly jako MVP — rychle a přesně podle VIN</h1>
-        <p data-i18n="hero_text">Pošlete značku vozu, VIN a kontakt. Najdeme originál i aftermarket a dovezeme vlastní kurýrní službou — často ještě tentýž den.</p>
-        <div class="pills">
-          <span class="pill" data-i18n="pill1">Celá ČR</span>
-          <span class="pill" data-i18n="pill2">Den v den vlastní kurýr</span>
-          <span class="pill" data-i18n="pill3">Osobní i firemní poptávky</span>
-        </div>
-      </div>
-      <div class="form-card" id="objednavka">
-        <h2 data-i18n="form_title">Objednávka / poptávka</h2>
-        <p class="sub" data-i18n="form_sub">Vyplňte údaje o autě. Čím přesnější VIN, tím rychlejší nabídka.</p>
-        <form id="order-form" novalidate>
-          <div>
-            <label for="auto" data-i18n="label_auto">Vozidlo (značka, model, rok)</label>
-            <input id="auto" name="auto" type="text" data-i18n-placeholder="ph_auto" placeholder="např. Škoda Octavia 2018" required />
-          </div>
-          <div>
-            <label for="vin" data-i18n="label_vin">VIN kód</label>
-            <input id="vin" name="vin" type="text" data-i18n-placeholder="ph_vin" placeholder="17znakový VIN" maxlength="17" required />
-          </div>
-          <div>
-            <label for="jmeno" data-i18n="label_name">Jméno majitele</label>
-            <input id="jmeno" name="jmeno" type="text" data-i18n-placeholder="ph_name" placeholder="Jan Novák" required />
-          </div>
-          <div>
-            <label for="telefon" data-i18n="label_phone">Telefon</label>
-            <input id="telefon" name="telefon" type="tel" data-i18n-placeholder="ph_phone" placeholder="+420 ..." required />
-          </div>
-          <div>
-            <label for="komentar" data-i18n="label_comment">Jaký díl potřebujete?</label>
-            <textarea id="komentar" name="komentar" data-i18n-placeholder="ph_comment" placeholder="např. přední brzdové destičky..."></textarea>
-          </div>
-          <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
-          <button class="btn" type="submit" id="submit-btn" data-i18n="btn">Odeslat poptávku</button>
-          <div id="form-status" class="status" role="status"></div>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <section class="catalog" id="katalog">
-    <div class="section" style="padding-top:72px;padding-bottom:72px">
-      <h2 data-i18n="cat_title">Katalog vozidel</h2>
-      <p class="lead" data-i18n="cat_lead">Značka → model → orientační ceny. Kliknutím díl vložíte do poptávky.</p>
-      <div class="cat-tabs" id="cat-tabs">
-        <button type="button" data-cat-mode="cars" class="on" data-i18n="tab_cars">Auta / díly</button>
-        <button type="button" data-cat-mode="bat" data-i18n="tab_bat">Autobaterie</button>
-      </div>
-      <div class="crumbs" id="cat-crumbs"></div>
-      <div id="cat-view"></div>
-      <p class="note-price" data-i18n="cat_note">Ceny „od“ jsou orientační aftermarket. Přesnou cenu originálu i analogu potvrdíme po VIN.</p>
-    </div>
-  </section>
-
-  <section class="delivery">
-    <div class="inner">
-      <div>
-        <h2 data-i18n="del_title">Doručení den v den — vlastní kurýr</h2>
-        <p data-i18n="del_text">Nemáte čas čekat na balík. Pokud je díl skladem, vyjedeme sami. V Praze a okolí často stihneme doručit ještě dnes. Po ČR — expres podle dohody.</p>
-        <ul class="check">
-          <li data-i18n="del_1">Vlastní kurýrní služba, ne jen PPL / Zásilkovna</li>
-          <li data-i18n="del_2">Same-day v Praze a Středočeském kraji</li>
-          <li data-i18n="del_3">Expres po celé ČR, jakmile díl potvrdíme</li>
-        </ul>
-      </div>
-      <div class="delivery-box">
-        <strong data-i18n="del_box_title">Den v den</strong>
-        <p data-i18n="del_box_text">Poptávka ráno → ověření skladu → kurýr vyráží. Žádný „až příští týden“.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="journey" id="cesta">
-    <div class="section">
-      <h2 data-i18n="how_title">Jak probíhá objednávka</h2>
-      <p class="lead" data-i18n="how_lead">Čtyři kroky od poptávky po doručení — bez košíku.</p>
-      <div class="journey-track">
-        <svg class="journey-lines" viewBox="0 0 1000 100" preserveAspectRatio="none" aria-hidden="true">
-          <path d="M80 58 C 170 8, 230 92, 330 52 S 470 8, 560 56 S 700 96, 790 48 S 880 10, 920 42" fill="none" stroke="#d5001c" stroke-width="2.2" stroke-linecap="round" opacity="0.55"/>
-          <path d="M80 58 C 170 8, 230 92, 330 52 S 470 8, 560 56 S 700 96, 790 48 S 880 10, 920 42" fill="none" stroke="#a8872e" stroke-width="1.2" stroke-dasharray="5 8" opacity="0.7"/>
-        </svg>
-        <ol class="journey-steps">
-          <li class="j-step is-now">
-            <span class="jn">01</span>
-            <h3 data-i18n="j1_t">Poptávka</h3>
-            <p data-i18n="j1_p">Formulář: auto, VIN, telefon a jaký díl potřebujete.</p>
-          </li>
-          <li class="j-step">
-            <span class="jn">02</span>
-            <h3 data-i18n="j2_t">Zpracování</h3>
-            <p data-i18n="j2_p">Ověříme sklad, originál i analog a připravíme cenu.</p>
-          </li>
-          <li class="j-step">
-            <span class="jn">03</span>
-            <h3 data-i18n="j3_t">Potvrzení telefonem</h3>
-            <p data-i18n="j3_p">Zavoláme, odsouhlasíme díl, cenu a termín doručení.</p>
-          </li>
-          <li class="j-step">
-            <span class="jn">04</span>
-            <h3 data-i18n="j4_t">Odeslání</h3>
-            <p data-i18n="j4_p">Vlastní kurýr — v Praze často den v den, po ČR expres.</p>
-          </li>
-        </ol>
-      </div>
-    </div>
-  </section>
-
+  <div class="garage wrap" id="garage-chip" hidden></div>
+  <main id="app"></main>
   <footer>
-    <div class="foot">
-      <div><strong>MVP Parts</strong> <span data-i18n="footer_brand">— náhradní díly. Úroveň MVP.</span></div>
-      <div data-i18n="footer_gdpr">Odesláním souhlasíte se zpracováním údajů k vyřízení poptávky (GDPR).</div>
+    <div class="wrap foot">
+      <strong>MVP Parts</strong>
+      <span>Struktura e-shopu jako Motora. Katalog dílů — API později.</span>
     </div>
   </footer>
-
-  <script src="js/site.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
 </body>
 </html>
