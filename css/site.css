@@ -198,8 +198,13 @@ button, input, textarea { font: inherit; color: inherit; }
   box-shadow: var(--shadow);
 }
 .cat-card .art {
-  width: 92px; height: 76px;
+  width: 112px; height: 96px;
   display: grid; place-items: center;
+}
+.cat-card .art img {
+  width: 112px; height: 96px;
+  object-fit: contain;
+  display: block;
 }
 .cat-card .art svg { width: 82px; height: 70px; }
 .cat-card span {
@@ -375,3 +380,7 @@ html[lang="cs"] .hero-title { line-height: 1.22; }
   .brand-tile { min-height: 124px; }
   .brand-tile img { width: 84px; height: 54px; }
 }
+
+.fam-h { font-size: .72rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); padding: 10px 4px 6px; }
+.filter-models { width: 100%; border: 1px solid var(--line); border-radius: 999px; padding: 10px 14px; margin: 8px 0 14px; background: var(--card); }
+.brand-tile small { color: var(--muted); font-size: .7rem; font-weight: 600; }

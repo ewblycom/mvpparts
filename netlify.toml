@@ -1,6 +1,3 @@
+# Detached. Hosting is GitHub Pages — https://ewblycom.github.io/mvpparts/
 [build]
-  publish = "."
-  functions = "netlify/functions"
-
-[functions]
-  node_bundler = "esbuild"
+  ignore = "exit 0"
